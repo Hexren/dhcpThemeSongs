@@ -41,3 +41,6 @@ add dhcp hooks
 
   
     }
+    
+create a database and configure dhcpevent.py
+=====================================
