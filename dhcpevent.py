@@ -5,9 +5,10 @@ import os
 import MySQLdb
 import syslog
 
-
+#beware of isc dhcp number conversion 'd0:22:be:20:05:e6' becomes 'd0:22:be:20:5:e6', without leading zeroes
 themes = {
-    'bc:f5:ac:f6:2d:46': 'http://eric.hernandez3.free.fr/VOX/VOX/bruitage%203/TV%20&%20Movie%20Themes%20-%20Star%20Wars%20-%20Imperial%20March.mp3'
+    'bc:f5:ac:f6:2d:46': 'http://eric.hernandez3.free.fr/VOX/VOX/bruitage%203/TV%20&%20Movie%20Themes%20-%20Star%20Wars%20-%20Imperial%20March.mp3',
+    'd0:22:be:20:5:e6': 'http://www.synthesisradio.com/dailyguru/TTWT.mp3'
 }
 
 #should be discovered by name
