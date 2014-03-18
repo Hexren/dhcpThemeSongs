@@ -26,20 +26,18 @@ add dhcp hooks
                   }
 
     on expiry {
-    # we don't have a mac in hardware here
-  
-                          if(exists agent.remote-id) {
-  
-                                  set clhw = binary-to-ascii(16, 8, ":", substring(option agent.remote-id, 2, 6));
-  
-                          } else {
-  
-                                  set clhw = "";
-  
-                          }
-  
-                          set clip = binary-to-ascii(10, 8, ".", leased-address);
-  
-                          execute("/usr/local/sbin/dhcpevent", "remove", clip, clhw);
+                        set clip = binary-to-ascii(10, 8, ".", leased-address);
+                        if(exists agent.remote-id) {
+
+                                set clhw = binary-to-ascii(16, 8, ":", substring(option agent.remote-id, 2, 6));
+                                execute("/usr/local/sbin/dhcpevent", "remove", clip, clhw);
+
+                        } else {
+
+                                set clhw = "";
+                                execute("/usr/local/sbin/dhcpevent", "remove", clip);
+
+                        }
+
   
     }
