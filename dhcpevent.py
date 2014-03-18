@@ -11,7 +11,9 @@ themes = {
 }
 
 #should be discovered by name
-sonosPlayer = '192.168.1.129'
+wohnzimmer = '192.168.1.129';
+atrium = '192.168.1.135'
+sonosPlayer = atrium
 
 #add hardware address from last commit
 def addHw(data, cur):
@@ -51,10 +53,13 @@ def playTheme(data, cur, themes, sonosPlayer):
     if data['hw'] in themes.keys() and getLastAction(data, cur) == 'remove':
         from soco import SoCo
         sonos = SoCo(sonosPlayer)
+        if sonos.get_current_transport_info() == 'PLAYING':
+            return '';
+        sonos.unjoin();
         sonos.play_uri(themes[data['hw']])
         sonos.play()
-
-
+        #check if player is playing return null if yes
+        
 
 
 if __name__ == '__main__':
