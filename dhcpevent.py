@@ -35,7 +35,7 @@ def addHw(data, cur):
 #add hardware address from last commit
 def getLastAction(data, cur):
     try:
-        cur.execute("select action from events where ip = %(ip)s and hw = %(hw)s order by tm desc limit 1,1", data)
+        cur.execute("select action from events where hw = %(hw)s order by tm desc limit 1,1", data)
         if cur.rowcount > 0:
             row = cur.fetchone()
             return row[0]
