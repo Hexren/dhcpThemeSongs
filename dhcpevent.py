@@ -58,8 +58,9 @@ def playTheme(data, cur, themes, sonosPlayer):
             return '';
         sonos.unjoin();
         sonos.play_uri(themes[data['hw']])
+        sonos.volume = 20;    
+        syslog.syslog('Playing theme for: ' + data['hw'])
         sonos.play()
-        #check if player is playing return null if yes
         
 
 
