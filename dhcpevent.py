@@ -69,8 +69,6 @@ if __name__ == '__main__':
         if newpid == 0:
                 db = MySQLdb.connect(host="192.168.1.83", user="dhcp", passwd="sdsiuh347sdf435", db="dhcp_log")
 
-                # you must create a Cursor object. It will let
-                #  you execute all the queries you need
                 cur = db.cursor()
                 data = {
                         'action' : argv[1],
