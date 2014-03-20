@@ -50,7 +50,7 @@ if __name__ == '__main__':
         hw = row[0]
         updateState(hw, cur)
 
-    cur.execute("SELECT lastIp FROM state WHERE state = 'tentatively offline' AND lastSeen < (NOW() - INTERVAL 5 HOUR)")
+    cur.execute("SELECT lastIp FROM state WHERE state = 'tentatively offline' AND lastSeen < (NOW() - INTERVAL 4 HOUR)")
     for row in cur.fetchall():
         ip = row[0]
         testSetOffline(ip)
