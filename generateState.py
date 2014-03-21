@@ -18,7 +18,7 @@ def updateState( hw, cur):
             state = 'tentatively offline'
         cur.execute("DELETE FROM state WHERE hw = %(hw)s", { "hw":hw })
         cur.execute("INSERT INTO state (hw, state, lastIp, lastSeen) VALUES (%(hw)s, %(state)s, %(ip)s, %(tm)s)", { "hw":hw, "state" : state, "ip" : ip, "tm": tm })
-        #cur.execute("DELETE FROM events WHERE hw = %(hw)s", { "hw":hw })
+        cur.execute("DELETE FROM events WHERE hw = %(hw)s", { "hw":hw })
     
     except MySQLdb.Error, e:
         try:
