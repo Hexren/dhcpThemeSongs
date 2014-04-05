@@ -33,7 +33,7 @@ def addHw(data, cur):
             syslog.syslog(syslog.LOG_ERR, "MySQL Error: %s" % str(e))
     exit(233)
 
-#add hardware address from last commit
+#gets last action before the one just inserted
 def getLastAction(data, cur):
     try:
         cur.execute("select action from events where hw = %(hw)s order by tm desc limit 1,1", data)
@@ -59,9 +59,11 @@ def playTheme(data, cur, themes, sonosPlayer):
             return '';
         sonos.unjoin();
         sonos.play_uri(themes[data['hw']])
-        sonos.volume = 20;    
-        syslog.syslog('Playing theme for: ' + data['hw'])
+        sonos.volume = 20;
+        if sonos.get_current_transport_info() == 'PLAYING':
+            return '';    
         sonos.play()
+        syslog.syslog('Playing theme for: ' + data['hw'])
         
 
 
