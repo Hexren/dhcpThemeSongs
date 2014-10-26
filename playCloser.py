@@ -14,7 +14,8 @@ themes = {
 #should be discovered by name
 wohnzimmer = '192.168.1.129';
 atrium = '192.168.1.135'
-sonosPlayer = wohnzimmer
+wc = '192.168.1.162'
+sonosPlayer = wc
 	
 def playTheme(themes, sonosPlayer):
     sonos = SoCo(sonosPlayer)
@@ -28,7 +29,7 @@ def playTheme(themes, sonosPlayer):
     sonos.add_uri_to_queue(themes['closer'])
     sonos.play_mode = 'REPEAT_ALL'
     syslog.syslog('%s' % sonos.play_mode)
-    sonos.volume = 40;    
+    sonos.volume = 5;    
     if playerPlays(sonos):
         return '';    
     sonos.play()
