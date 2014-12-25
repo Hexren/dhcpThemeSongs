@@ -14,7 +14,7 @@ themes = {
 
 #should be discovered by name
 wohnzimmer = '192.168.1.129';
-atrium = '192.168.1.135'
+atrium = '192.168.1.132'
 sonosPlayer = atrium
 
 #add hardware address from last commit
