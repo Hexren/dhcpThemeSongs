@@ -20,7 +20,7 @@ sonosPlayer = atrium
 #add hardware address from last commit
 def addHw(data, cur):
     try:
-        cur.execute("SELECT hw FROM events WHERE action = 'commit' AND ip = %(ip)s ORDER BY tm ASC LIMIT 1", data)
+        cur.execute("SELECT hw FROM events WHERE action = 'commit' AND ip = %(ip)s ORDER BY tm DESC LIMIT 1", data)
         if cur.rowcount > 0:
             row = cur.fetchone()
             return row[0]
